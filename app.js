@@ -23,7 +23,8 @@ function getAllItems() {
 }
 
 exports.getAllItems = (req, res) => {
-    /*comment*/
+    // add authentication
+    // getAllItems does not require any parameter, call directly
     getAllItems(...req)
 }
 
@@ -36,8 +37,9 @@ function getItemsByCategory(category) {
 }
 
 exports.getItemsByCategory = (req, res) => {
-    /*comment*/
-    getItemsByCategory(req.category)
+    // add authentication
+    // check query parameter / request body: category
+    getItemsByCategory(...req)
 }
 
 app.get("/getItemsByCategory", getItemsByCategory);
@@ -50,8 +52,9 @@ function addItem(itemName, itemDescription, itemPrice, itemCategory, itemImage) 
 }
 
 exports.addItem = (req, res) => {
-    /*comment*/
-    addItem(req.category)
+    // admin level authentication
+    // check request body: full item parameters: itemName, itemDescription, itemPrice, itemCategory, itemImage
+    addItem(...req)
 }
 
 app.post("/addItem", addItem);
@@ -62,8 +65,9 @@ function updateItem(itemId, itemName, itemDescription, itemPrice, itemCategory, 
 }
 
 exports.updateItem = (req, res) => {
-    /*comment*/
-    updateItem(req.category)
+    // admin authentication
+    // check request body: must have itemId
+    updateItem(...req)
 }
 
 app.post("/updateItem", updateItem);
@@ -74,8 +78,9 @@ function deleteItem(itemId) {
 }
 
 exports.deleteItem = (req, res) => {
-    /*comment*/
-    deleteItem(req.category)
+    // admin authentication
+    // check query parameter / request body: itemId
+    deleteItem(...req)
 }
 
 app.post("/deleteItem", deleteItem);
@@ -90,8 +95,9 @@ function placeOrder(sessionId, tableId, orderItems) {
 }
 
 exports.placeOrder = (req, res) => {
-    /*comment*/
-    placeOrder(req.category)
+    // add authentication
+    // check request body: sessionId, tableId, orderItems
+    placeOrder(...req)
 }
 
 app.post("/placeOrder", placeOrder);
@@ -106,7 +112,8 @@ function getCurrentOrders(sessionId, tableId, orderDate) {
 }
 
 exports.getCurrentOrders = (req, res) => {
-    /*comment*/
+    // add authentication
+    // check request body: sessionId, tableId, orderDate
     getCurrentOrders(req.category)
 }
 
@@ -119,13 +126,9 @@ function updateOrderStatus(session_id, table_id, status) {
 }
 
 exports.updateOrderStatus = (req, res) => {
-    /*comment*/
+    // add authentication
+    // check request body: sessionId, tableId, status
     updateOrderStatus(req.category)
 }
 
 app.post("/updateOrderStatus", updateOrderStatus);
-
-
-
-
-
